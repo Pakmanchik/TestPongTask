@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class RacketPlayer : ParentRacket
 {
-    [SerializeField] private float _speedRacket;
+    [SerializeField] 
+    private float _speedRacket;
+    
     private Vector2 _directionRacket;
     private float _vericalalVector;
 
@@ -19,7 +21,6 @@ public class RacketPlayer : ParentRacket
         _directionRacket = new Vector2(0f, _vericalalVector*_speedRacket);  
         
         rigidbody.MovePosition(rigidbody.position + _directionRacket * Time.fixedDeltaTime);
-       
     }
     
     

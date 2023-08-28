@@ -1,14 +1,13 @@
 using UnityEngine;
 public class RacketComputer : ParentRacket
 {
+    [Tooltip("Граница видимости ИИ")]
+    [SerializeField]
+    private Rigidbody2D _pointView;
     [SerializeField] 
     private Rigidbody2D ball;
     [SerializeField] 
     private float _speedRacket;
-
-    [Tooltip("Граница видимости ИИ")]
-    [SerializeField]
-    private Rigidbody2D _pointView;
 
     private Vector2 _vericalalVector;
     private Vector2 _directionRacket;

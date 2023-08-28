@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField]
+    private float speed;
+    
     private Rigidbody2D _rigidbody;
 
     private void Awake()
