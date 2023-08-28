@@ -19,7 +19,6 @@ public class RacketPlayer : ParentRacket
         _directionRacket = new Vector2(0f, _vericalalVector*_speedRacket);  
         
         rigidbody.MovePosition(rigidbody.position + _directionRacket * Time.fixedDeltaTime);
-       
     }
     
     
