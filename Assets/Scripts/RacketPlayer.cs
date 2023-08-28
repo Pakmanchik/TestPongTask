@@ -6,16 +6,21 @@ public class RacketPlayer : ParentRacket
     private Vector2 _directionRacket;
     private float _vericalalVector;
 
-    private void Update()
+    private void Awake()
     {
-        MoveRacket();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
+    private void FixedUpdate() => MoveRacket();
+    
 
     private void MoveRacket()
     {
         _vericalalVector = Input.GetAxis("Vertical");
-
-        _directionRacket = new Vector2(0,_vericalalVector) * _speedRacket * Time.deltaTime;
-        transform.Translate(_directionRacket);
+        _directionRacket = new Vector2(0f, _vericalalVector*_speedRacket);  
+        
+        rigidbody.MovePosition(rigidbody.position + _directionRacket * Time.fixedDeltaTime);
+       
     }
+    
+    
 }

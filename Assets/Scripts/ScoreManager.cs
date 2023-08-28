@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     private void Awake()
     {
         _endGame = GetComponent<EndGame>();
-        if (_endGame != null) Debug.Log($"ScoreManager не нашел EndGame");
+        if (_endGame == null) Debug.Log($"ScoreManager не нашел EndGame");
     }
 
     public void PlayerScore()
