@@ -11,15 +11,16 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        
         if (_rigidbody == null) Debug.Log($"Ball не найден RigidBody");
     }
 
     private void Start()
     {
-        AddStartSpeed();
+        AddShootBall();
     }
 
-    private void AddStartSpeed()
+    private void AddShootBall()
     {
         float x = Random.value < 0.5F ? Random.Range(-1.0f, -0.5f) :
                                         Random.Range(0.5f, 1.0f);
@@ -34,6 +35,6 @@ public class Ball : MonoBehaviour
         _rigidbody.position = Vector3.zero;
         _rigidbody.velocity = Vector3.zero;
         
-        AddStartSpeed();
+        AddShootBall();
     }
 }

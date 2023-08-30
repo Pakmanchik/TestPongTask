@@ -4,12 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
-    [SerializeField] private GameObject _ball;
-    [SerializeField] private GameObject _button;
+    [SerializeField] 
+    private GameObject _ball;
+    [SerializeField] 
+    private GameObject _button;
 
     private void Awake()
     {
         _button.SetActive(false);
+        
+        if (_ball == null) Debug.Log($"EndGame не нашел _ball {this}");
+        if (_button == null) Debug.Log($"EndGame не нашел _button {this}");
     }
 
     public void PauseGame()
@@ -22,8 +27,4 @@ public class EndGame : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-
-
-
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,7 +14,11 @@ namespace PatternBuilderVersion3
         
         private RacketSkins _skin;
 
-        
+        private void Awake()
+        {
+            if (_skinContainer == null) Debug.Log($"_skinContainer не найден {this}");
+        }
+
         public void SetName(string name)
         {
             Name = name;
@@ -30,7 +35,7 @@ namespace PatternBuilderVersion3
         {
             _skin = skin;
 
-            skin.transform.SetParent(_skinContainer);
+            _skin.transform.SetParent(_skinContainer);
         }
 
         public override string ToString()

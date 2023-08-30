@@ -9,28 +9,28 @@ namespace PatternBuilderVersion3
         private RacketStats _stats;
         private string _racketName;
         
-        public RacketBuilder WithRootPrefab(Racket prefab)
+        public RacketBuilder AddRootPrefab(Racket prefab)
         {
             _prefabRacket = prefab;
 
             return this;
         }
 
-        public RacketBuilder WithSkin(RacketSkins skin)
+        public RacketBuilder AddSkin(RacketSkins skin)
         {
             _skinPrefab = skin;
 
             return this;
         }
         
-        public RacketBuilder WithStats(RacketStats stats)
+        public RacketBuilder AddStats(RacketStats stats)
         {
             _stats = stats;
 
             return this;
         }
 
-        public RacketBuilder WithName(string racketName)
+        public RacketBuilder AddName(string racketName)
         {
             _racketName = racketName;
 

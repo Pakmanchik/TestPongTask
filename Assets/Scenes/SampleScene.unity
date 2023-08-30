@@ -687,7 +687,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 753748500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1867501569}
+        m_TargetAssemblyTypeName: EndGame, Assembly-CSharp
+        m_MethodName: ReloadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &753748500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,9 +1235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f4ef09ece95754686bb092e1780d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointView: {fileID: 1772174231}
-  ball: {fileID: 1122990428}
-  _speedRacket: 50
+  _ball: {fileID: 1122990428}
+  _speedRacket: 10
 --- !u!50 &1331732225
 Rigidbody2D:
   serializedVersion: 4
@@ -1243,7 +1254,7 @@ Rigidbody2D:
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
@@ -1911,7 +1922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cfd3395a1d34ed699d8534a1940b324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skin: 0
+  _skin: 1
   _racketRootPrefab: {fileID: 519287020}
   _skinBoltPrefab: {fileID: 183140505, guid: 612d39f48c5c517438e197d986bd9509, type: 3}
   _skinRacketPrefab: {fileID: 1760468349, guid: be5ae28b048fb964a990a53c935fb6da, type: 3}

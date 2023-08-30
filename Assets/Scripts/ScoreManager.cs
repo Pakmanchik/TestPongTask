@@ -16,7 +16,12 @@ public class ScoreManager : MonoBehaviour
     private void Awake()
     {
         _endGame = GetComponent<EndGame>();
-        if (_endGame == null) Debug.Log($"ScoreManager не нашел EndGame");
+        
+        if (_endGame == null) Debug.Log($"ScoreManager не нашел EndGame {this}");
+        if (_ball == null) Debug.Log($"ScoreManager не нашел _ball {this}");
+        if (_playerScoreText == null) Debug.Log($"ScoreManager не нашел _playerScoreText {this}");
+        if (_computerScoreText == null) Debug.Log($"ScoreManager не нашел _computerScoreText {this}");
+        if (_finalScoreText == null) Debug.Log($"ScoreManager не нашел _finalScoreText {this}");
     }
 
     public void PlayerScore()
@@ -48,7 +53,7 @@ public class ScoreManager : MonoBehaviour
         _playerScoreText.text = _playerscore.ToString();
         _computerScoreText.text = _computerscore.ToString();
 
-        _finalScoreText.text = $"{_playerscore} : {_computerscore} ";
+        _finalScoreText.text = $"{_playerscore} : {_computerscore}";
 
     }
 }
