@@ -15,7 +15,6 @@ public class RacketPlayer : ParentRacket
         Debug.Log($"(RacketPlayer) _speedRacket = {_speedRacket}  ({this})");
     }
     private void FixedUpdate() => MoveRacket();
-    
 
     private void MoveRacket()
     {

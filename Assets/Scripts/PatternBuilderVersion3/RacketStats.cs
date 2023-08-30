@@ -2,8 +2,8 @@ namespace PatternBuilderVersion3
 {
     public class RacketStats
     {
-        public int Level;
-        public int Hp;
-        public int Speed;
+        public int hp;
+        public int level;
+        public int speed;
     }
 }

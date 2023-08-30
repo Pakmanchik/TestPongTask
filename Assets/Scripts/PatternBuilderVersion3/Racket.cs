@@ -40,7 +40,7 @@ namespace PatternBuilderVersion3
 
         public override string ToString()
         {
-            var line = $"Racket: Skin = {Name}, Stats: Level = {Stats.Level}, HP = {Stats.Hp}, Speed = {Stats.Speed}";
+            var line = $"Racket: Skin = {Name}, Stats: Level = {Stats.level}, HP = {Stats.hp}, Speed = {Stats.speed}";
 
             return line;
         }

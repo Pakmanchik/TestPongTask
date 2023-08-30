@@ -54,6 +54,5 @@ public class ScoreManager : MonoBehaviour
         _computerScoreText.text = _computerscore.ToString();
 
         _finalScoreText.text = $"{_playerscore} : {_computerscore}";
-
     }
 }

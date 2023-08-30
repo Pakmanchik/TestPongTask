@@ -18,21 +18,27 @@ namespace PatternBuilderVersion3
         private RacketSkins _skinBoltPrefab;
         [SerializeField] 
         private RacketSkins _skinRacketPrefab;
-
+        
+        [SerializeField] 
+        private CharacterRacket _characterRacket; 
+        
         // TODO: Превратить в ScriptbleObject
+
+        private int _hp, _level, _speed;
+
         
         private RacketStats _boltStats = new RacketStats
         {
-            Hp = 50,
-            Level = 1,
-            Speed = 10
+            hp = 50,
+            level = 1,
+            speed = 10
         };
         
         private RacketStats _racketStats = new RacketStats
         {
-            Hp = 100,
-            Level = 2,
-            Speed = 20
+            hp = 100,
+            level = 2,
+            speed = 20
         };
 
         private void Awake()

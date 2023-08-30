@@ -1926,6 +1926,7 @@ MonoBehaviour:
   _racketRootPrefab: {fileID: 519287020}
   _skinBoltPrefab: {fileID: 183140505, guid: 612d39f48c5c517438e197d986bd9509, type: 3}
   _skinRacketPrefab: {fileID: 1760468349, guid: be5ae28b048fb964a990a53c935fb6da, type: 3}
+  _characterRacket: {fileID: 11400000, guid: 3fdd2b5723552ff40b575432bc5414e1, type: 2}
 --- !u!4 &1793511919
 Transform:
   m_ObjectHideFlags: 0
