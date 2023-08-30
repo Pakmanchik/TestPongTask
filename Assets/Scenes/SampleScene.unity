@@ -1213,9 +1213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f4ef09ece95754686bb092e1780d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pointView: {fileID: 1772174231}
   ball: {fileID: 1122990428}
   _speedRacket: 20
-  _pointView: {fileID: 1772174231}
 --- !u!50 &1331732225
 Rigidbody2D:
   serializedVersion: 4
@@ -1819,6 +1819,9 @@ GameObject:
   - component: {fileID: 1760468345}
   - component: {fileID: 1760468344}
   - component: {fileID: 1760468349}
+  - component: {fileID: 1760468352}
+  - component: {fileID: 1760468351}
+  - component: {fileID: 1760468350}
   m_Layer: 0
   m_Name: Racket(Player)
   m_TagString: Untagged
@@ -1963,6 +1966,48 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 154e34aa3289d31449769702af6343cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1760468350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760468343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc487a3ceff452180b6f34cde23af3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1760468351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760468343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416137fa55ef4d7c997d5724e181d54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRendererRacket: {fileID: 1760468347}
+  color:
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+--- !u!114 &1760468352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760468343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ab1ffd3e1d4209af8871f949118efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1772174230
