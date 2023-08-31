@@ -1,8 +1,9 @@
+using Interface;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class EndGame : MonoBehaviour
+public class EndGame : MonoBehaviour, PauseGame
 {
     [SerializeField] 
     private GameObject _ball;

@@ -1,3 +1,4 @@
+using Interface;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,18 +7,22 @@ public class ScoreManager : MonoBehaviour
     private int _playerscore = 0;
     private int _computerscore = 0;
 
-    private EndGame _endGame;
+    private PauseGame _pauseGame;
 
-    [SerializeField] private Ball _ball;
-    [SerializeField] private Text _playerScoreText;
-    [SerializeField] private Text _computerScoreText;
-    [SerializeField] private Text _finalScoreText;
+    [SerializeField] 
+    private Ball _ball;
+    [SerializeField] 
+    private Text _playerScoreText;
+    [SerializeField] 
+    private Text _computerScoreText;
+    [SerializeField] 
+    private Text _finalScoreText;
 
     private void Awake()
     {
-        _endGame = GetComponent<EndGame>();
+        _pauseGame = GetComponent<EndGame>();
         
-        if (_endGame == null) Debug.Log($"ScoreManager не нашел EndGame {this}");
+        if (_pauseGame == null) Debug.Log($"ScoreManager не нашел PauseGame {this}");
         if (_ball == null) Debug.Log($"ScoreManager не нашел _ball {this}");
         if (_playerScoreText == null) Debug.Log($"ScoreManager не нашел _playerScoreText {this}");
         if (_computerScoreText == null) Debug.Log($"ScoreManager не нашел _computerScoreText {this}");
@@ -31,7 +36,7 @@ public class ScoreManager : MonoBehaviour
 
         ReloadScore();
 
-        if (_playerscore == 7) _endGame.PauseGame();
+        if (_playerscore == 7) _pauseGame.PauseGame();
 
         _ball.ResetPosition();
     }
@@ -43,7 +48,7 @@ public class ScoreManager : MonoBehaviour
 
         ReloadScore();
 
-        if (_computerscore == 7) _endGame.PauseGame();
+        if (_computerscore == 7) _pauseGame.PauseGame();
 
         _ball.ResetPosition();
     }

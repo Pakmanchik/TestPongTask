@@ -7,7 +7,7 @@ namespace PatternBuilderVersion3
     public class CharacterRacket : ScriptableObject
     {
         [SerializeField] 
-        private int _hp;
+        private  int _hp;
         [SerializeField] 
         private int _level;
         [SerializeField] 
@@ -24,5 +24,12 @@ namespace PatternBuilderVersion3
         public int Level => _level;
 
         public int Speed => _speed;
+
+        public RacketStats racketStats = new()
+        {
+            hp = 1,
+            level = 1,
+            speed = 1,
+        };
     }
 }

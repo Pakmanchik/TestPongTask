@@ -16,15 +16,18 @@ public class RacketComputer : ParentRacket
  
     private void MoveRacket()
     {
-        if (_ball.velocity.x > -3f)
+        if (_ball)
         {
-            if (_ball.position.y >= transform.position.y)
+            if (_ball.velocity.x > -3f)
             {
-                DirectionRacket(Vector2.up);
-            }
-            else if (_ball.position.y <= transform.position.y)
-            {
-                DirectionRacket(Vector2.down);
+                if (_ball.position.y >= transform.position.y)
+                {
+                    DirectionRacket(Vector2.up);
+                }
+                else if (_ball.position.y <= transform.position.y)
+                {
+                    DirectionRacket(Vector2.down);
+                }
             }
         }
     }

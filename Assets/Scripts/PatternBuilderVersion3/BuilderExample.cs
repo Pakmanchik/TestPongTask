@@ -1,5 +1,3 @@
-using System;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -26,15 +24,10 @@ namespace PatternBuilderVersion3
 
         private int _hp, _level, _speed;
 
+
+        private RacketStats _boltStats;
         
-        private RacketStats _boltStats = new RacketStats
-        {
-            hp = 50,
-            level = 1,
-            speed = 10
-        };
-        
-        private RacketStats _racketStats = new RacketStats
+        private RacketStats _racketStats = new()
         {
             hp = 100,
             level = 2,
@@ -57,10 +50,10 @@ namespace PatternBuilderVersion3
                                 .AddRootPrefab(_racketRootPrefab)
                                 .AddName("Bolt")
                                 .AddSkin(_skinBoltPrefab)
-                                .AddStats(_boltStats)
+                                .AddStats(_characterRacket.racketStats)
                                 .Build();
-                
-                Debug.Log(createdBolt);
+
+                Debug.Log($"Создан {createdBolt}");
             }
 
             else if (_skin == Skin.Classic)
@@ -72,7 +65,7 @@ namespace PatternBuilderVersion3
                     .AddStats(_racketStats)
                     .Build();
                 
-                Debug.Log(createdRacket);
+                Debug.Log($"Создан {createdRacket}");
             }
             else
             {
