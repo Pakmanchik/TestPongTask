@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
     private int _playerscore = 0;
     private int _computerscore = 0;
 
-    private PauseGame _pauseGame;
+    private IPauseGame _pauseGame;
 
     [SerializeField] 
     private Ball _ball;
@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        _pauseGame = GetComponent<EndGame>();
+        _pauseGame = GetComponent<IPauseGame>();
         
         if (_pauseGame == null) Debug.Log($"ScoreManager не нашел PauseGame {this}");
         if (_ball == null) Debug.Log($"ScoreManager не нашел _ball {this}");
@@ -36,7 +36,7 @@ public class ScoreManager : MonoBehaviour
 
         ReloadScore();
 
-        if (_playerscore == 7) _pauseGame.PauseGame();
+        if (_playerscore == 1) _pauseGame.PauseGame();
 
         _ball.ResetPosition();
     }
@@ -48,7 +48,7 @@ public class ScoreManager : MonoBehaviour
 
         ReloadScore();
 
-        if (_computerscore == 7) _pauseGame.PauseGame();
+        if (_computerscore == 1) _pauseGame.PauseGame();
 
         _ball.ResetPosition();
     }

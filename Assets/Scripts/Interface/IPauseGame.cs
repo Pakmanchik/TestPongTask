@@ -1,6 +1,6 @@
 namespace Interface
 {
-    public interface PauseGame
+    public interface IPauseGame
     {
         public void PauseGame();
     }

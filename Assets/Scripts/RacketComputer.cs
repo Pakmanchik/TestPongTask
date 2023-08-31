@@ -2,18 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class RacketComputer : ParentRacket
+public class RacketComputer : RacketBase
 {
     [SerializeField] 
     private Rigidbody2D _ball;
     [SerializeField] 
     private float _speedRacket;
-
-    private Vector2 _vericalalVector;
-    private Vector2 _directionRacket;
-
+    
     private void FixedUpdate() => MoveRacket();
- 
+
     private void MoveRacket()
     {
         if (_ball)
@@ -22,20 +19,13 @@ public class RacketComputer : ParentRacket
             {
                 if (_ball.position.y >= transform.position.y)
                 {
-                    DirectionRacket(Vector2.up);
+                    Move(Vector2.up,_speedRacket);
                 }
                 else if (_ball.position.y <= transform.position.y)
                 {
-                    DirectionRacket(Vector2.down);
+                    Move(Vector2.down,_speedRacket);
                 }
             }
         }
-    }
-    
-    private void DirectionRacket(Vector2 verticalVector)
-    {
-        _directionRacket = verticalVector * _speedRacket; 
-        
-        rigidbody.MovePosition(rigidbody.position + _directionRacket * Time.fixedDeltaTime);
     }
 }

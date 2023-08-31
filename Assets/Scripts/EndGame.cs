@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class EndGame : MonoBehaviour, PauseGame
+public class EndGame : MonoBehaviour, IPauseGame
 {
     [SerializeField] 
     private GameObject _ball;
