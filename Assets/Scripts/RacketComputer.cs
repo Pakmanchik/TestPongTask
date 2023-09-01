@@ -1,14 +1,26 @@
 using System;
+using Interface;
 using UnityEngine;
 using UnityEngine.Serialization;
-
-public class RacketComputer : RacketBase
+// Комменты для запуска  
+public class RacketComputer  : MonoBehaviour
 {
     [SerializeField] 
     private Rigidbody2D _ball;
     [SerializeField] 
     private float _speedRacket;
     
+    [SerializeField]
+    private Rigidbody2D _rigidbody2D;
+    private IMove _move;
+    
+    private void Awake()
+    {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        
+        if(_rigidbody2D == null)  Debug.Log($"(RacketComputer) не нашел rigidbody  ({this})");
+        Debug.Log($"(RacketComputer) _speedRacket = {_speedRacket}  ({this})");
+    }
     private void FixedUpdate() => MoveRacket();
 
     private void MoveRacket()
@@ -19,11 +31,11 @@ public class RacketComputer : RacketBase
             {
                 if (_ball.position.y >= transform.position.y)
                 {
-                    Move(Vector2.up,_speedRacket);
+                    _move.Move(Vector2.up * _speedRacket,_rigidbody2D);
                 }
                 else if (_ball.position.y <= transform.position.y)
                 {
-                    Move(Vector2.down,_speedRacket);
+                    _move.Move(Vector2.down * _speedRacket,_rigidbody2D);
                 }
             }
         }

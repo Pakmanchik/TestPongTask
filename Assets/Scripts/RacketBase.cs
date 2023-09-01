@@ -2,22 +2,17 @@ using Interface;
 using UnityEngine;
 
 
-public class RacketBase : MonoBehaviour, IMove
+public class RacketBase : IMove
 {
-    protected Rigidbody2D rigidbody;
     private Vector2 _directionRacket;
 
-    private void Awake()
+    public void Move(Vector2 verticalVector,Rigidbody2D rigidbody2D)
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-        if (rigidbody == null) Debug.Log($"ParentRacket не нашел RigidBody");
-    }
-    
-    public void Move(Vector2 verticalVector, float speedRacket)
-    {
-        _directionRacket = verticalVector * speedRacket; 
+        Debug.Log($"Move {this}");
+        _directionRacket = verticalVector; 
         
-        rigidbody.MovePosition(rigidbody.position + _directionRacket * Time.fixedDeltaTime);
+        if(rigidbody2D == null)  Debug.Log($"(RacketPlayer) не нашел rigidbody  ({this})");
+        rigidbody2D.MovePosition(rigidbody2D.position + _directionRacket * Time.fixedDeltaTime);
     }
 
 }

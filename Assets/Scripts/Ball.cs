@@ -1,7 +1,8 @@
 using System.Collections;
+using Interface;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class Ball : MonoBehaviour, IBallResetPosition
 {
     [SerializeField]
     private float speed;

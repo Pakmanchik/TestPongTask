@@ -1226,6 +1226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ball: {fileID: 1122990428}
   _speedRacket: 10
+  _rigidbody2D: {fileID: 0}
 --- !u!50 &1331732225
 Rigidbody2D:
   serializedVersion: 4
@@ -1352,7 +1353,6 @@ GameObject:
   - component: {fileID: 1382482986}
   - component: {fileID: 1382482985}
   - component: {fileID: 1382482984}
-  - component: {fileID: 1382482988}
   m_Layer: 0
   m_Name: Goal(Computer)
   m_TagString: Untagged
@@ -1480,18 +1480,6 @@ Transform:
   m_Father: {fileID: 1718261333}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1382482988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382482983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154e34aa3289d31449769702af6343cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1386642920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,10 +1996,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4c6f5b2adbf594f8ae3ff37652c3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ball: {fileID: 1122990426}
-  _playerScoreText: {fileID: 602782312}
-  _computerScoreText: {fileID: 1112752874}
-  _finalScoreText: {fileID: 1113876349}
+  _uiData:
+    _playerScoreText: {fileID: 602782312}
+    _computerScoreText: {fileID: 1112752874}
+    _finalScoreText: {fileID: 1113876349}
+  _ballObject: {fileID: 1122990426}
 --- !u!114 &1976524618
 MonoBehaviour:
   m_ObjectHideFlags: 0

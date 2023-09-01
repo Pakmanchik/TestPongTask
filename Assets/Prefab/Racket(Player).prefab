@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedRacket: 3
+  _rigidbody2D: {fileID: 3490476833843190286}
 --- !u!114 &1760468349
 MonoBehaviour:
   m_ObjectHideFlags: 0
