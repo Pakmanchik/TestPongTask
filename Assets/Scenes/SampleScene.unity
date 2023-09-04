@@ -1948,6 +1948,8 @@ GameObject:
   - component: {fileID: 1976524617}
   - component: {fileID: 1976524618}
   - component: {fileID: 1976524616}
+  - component: {fileID: 1976524620}
+  - component: {fileID: 1976524619}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2000,7 +2002,6 @@ MonoBehaviour:
     _playerScoreText: {fileID: 602782312}
     _computerScoreText: {fileID: 1112752874}
     _finalScoreText: {fileID: 1113876349}
-  _ballObject: {fileID: 1122990426}
 --- !u!114 &1976524618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2018,6 +2019,33 @@ MonoBehaviour:
   _skinBoltPrefab: {fileID: 183140505, guid: 612d39f48c5c517438e197d986bd9509, type: 3}
   _skinRacketPrefab: {fileID: 1760468349, guid: be5ae28b048fb964a990a53c935fb6da, type: 3}
   _characterRacket: {fileID: 11400000, guid: 3fdd2b5723552ff40b575432bc5414e1, type: 2}
+--- !u!114 &1976524619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976524614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c866f84b89147ae88a3b041b4a19bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ballObject: {fileID: 1122990426}
+--- !u!114 &1976524620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976524614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3582e814294879b9b00d953f0c6d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ball: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &2079910879
 GameObject:
   m_ObjectHideFlags: 0

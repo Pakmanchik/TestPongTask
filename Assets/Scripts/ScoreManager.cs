@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using Interface;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,14 +16,15 @@ public class ScoreManager : MonoBehaviour
     private  IBallResetPosition _IballResetPosition;
     private IPauseGame _IpauseGame;
 
-    [SerializeField] 
-    private Ball _ballObject;
+    private GameManager _gameManager;
     
 
     private void Awake()
     {
-        _IpauseGame = GetComponent<IPauseGame>();
-        _IballResetPosition = GetComponent<IBallResetPosition>();
+       _IpauseGame = GetComponent<IPauseGame>();
+       _IballResetPosition = GetComponent<Ball>();
+       _gameManager = GetComponent<GameManager>();
+       
         
         CheckReferences();
     }
@@ -30,7 +32,8 @@ public class ScoreManager : MonoBehaviour
     private void CheckReferences()
     {
         if (_IpauseGame == null) Debug.Log($"ScoreManager не нашел PauseGame {this}");
-        if (_ballObject == null) Debug.Log($"ScoreManager не нашел _ball {this}");
+        if (_IballResetPosition == null) Debug.Log($"ScoreManager не нашел IBallResetPosition {this}");
+        if (_gameManager == null) Debug.Log($"ScoreManager не нашел _gameManager {this}");
     }
 
     public void PlayerScore()
@@ -39,9 +42,11 @@ public class ScoreManager : MonoBehaviour
         _uiData.PlayerScore = _playerScore;
         Debug.Log($"PlayerScore: {_playerScore}");
 
-        if (_playerScore == 1) _IpauseGame.PauseGame();
+        if (_playerScore == 2) _IpauseGame.PauseGame();
 
-        _IballResetPosition.ResetPosition();
+        Debug.Log($"                  {_gameManager._ball.GetComponent<Rigidbody2D>()} ");
+
+        _IballResetPosition.ResetPosition(_gameManager.rb);
     }
 
     public void ComputerScore()
@@ -50,20 +55,24 @@ public class ScoreManager : MonoBehaviour
         _uiData.ComputerScore = _computerScore;
         Debug.Log($"ComputerScore: {_computerScore}");
         
-        // _uiData.FinalScore = $"{_playerScore} : {_computerScore}"; // TODO: Не могу присвоить 
+         _uiData.FinalScore = $"{_playerScore} : {_computerScore}"; // TODO: Не могу присвоить 
 
-        if (_computerScore == 1) _IpauseGame.PauseGame();
+        if (_computerScore == 2) _IpauseGame.PauseGame();
 
-        _IballResetPosition.ResetPosition();
+        Debug.Log($"                  {_gameManager._ball.GetComponent<Rigidbody2D>()} ");
+        _IballResetPosition.ResetPosition(_gameManager.rb);
     }
 
 
     [Serializable]
     private class UiElements
     {
-        [SerializeField] private Text _playerScoreText;
-        [SerializeField] private Text _computerScoreText;
-        [SerializeField] private Text _finalScoreText;
+        [SerializeField]
+        private Text _playerScoreText;
+        [SerializeField]
+        private Text _computerScoreText;
+        [SerializeField]
+        private Text _finalScoreText;
 
         public int PlayerScore
         {
@@ -76,7 +85,6 @@ public class ScoreManager : MonoBehaviour
                 return score;
             }
             set => _playerScoreText.text = value.ToString();
-
         }
 
         public int ComputerScore
@@ -90,20 +98,12 @@ public class ScoreManager : MonoBehaviour
                 return score;
             }
             set => _computerScoreText.text = value.ToString();
-
-
         }
-        public int FinalScore
+        public string FinalScore
         {
-            get
-            {
-                var scoreText = _finalScoreText.text;
-
-                if (!Int32.TryParse(scoreText, out int score)) return 0;
-
-                return score;
-            }
-            set { _finalScoreText.text = value.ToString(); }
+            get => _finalScoreText.text;
+            
+            set => _finalScoreText.text = value;
         }
     }
 }

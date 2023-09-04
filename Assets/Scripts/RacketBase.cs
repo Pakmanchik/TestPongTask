@@ -8,7 +8,6 @@ public class RacketBase : IMove
 
     public void Move(Vector2 verticalVector,Rigidbody2D rigidbody2D)
     {
-        Debug.Log($"Move {this}");
         _directionRacket = verticalVector; 
         
         if(rigidbody2D == null)  Debug.Log($"(RacketPlayer) не нашел rigidbody  ({this})");

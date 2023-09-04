@@ -12,7 +12,7 @@ public class RacketComputer  : MonoBehaviour
     
     [SerializeField]
     private Rigidbody2D _rigidbody2D;
-    private IMove _move;
+    private IMove _move = new RacketBase();
     
     private void Awake()
     {
@@ -21,9 +21,10 @@ public class RacketComputer  : MonoBehaviour
         if(_rigidbody2D == null)  Debug.Log($"(RacketComputer) не нашел rigidbody  ({this})");
         Debug.Log($"(RacketComputer) _speedRacket = {_speedRacket}  ({this})");
     }
-    private void FixedUpdate() => MoveRacket();
 
-    private void MoveRacket()
+    private void FixedUpdate()  => MoveRacket();
+
+    public void MoveRacket()
     {
         if (_ball)
         {
