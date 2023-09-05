@@ -1,11 +1,12 @@
 using Interface;
 using UnityEngine;
 
-public class Ball : MonoBehaviour, IBallResetPosition
+public class Ball : MonoBehaviour
 {
     [SerializeField] 
     private float speed;
-
+    
+    
    
 
     public void AddShootBall(Rigidbody2D rigidbody2D)

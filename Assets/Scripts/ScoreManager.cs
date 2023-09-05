@@ -6,61 +6,50 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    private LevelInitializer _levelInitializer;
+    
+    
     [SerializeField]
     private UiElements _uiData;
+
+    [SerializeField] 
+    private int _endScore;
     
     private int _playerScore;
     private int _computerScore;
     private string _finalScore;
 
-    private  IBallResetPosition _IballResetPosition;
-    private IPauseGame _IpauseGame;
 
-    private GameManager _gameManager;
-    
-
-    private void Awake()
+    private void Initialize()
     {
-       _IpauseGame = GetComponent<IPauseGame>();
-       _IballResetPosition = GetComponent<Ball>();
-       _gameManager = GetComponent<GameManager>();
-       
-        
-        CheckReferences();
+        _levelInitializer = GetComponent<LevelInitializer>();
     }
-
-    private void CheckReferences()
-    {
-        if (_IpauseGame == null) Debug.Log($"ScoreManager не нашел PauseGame {this}");
-        if (_IballResetPosition == null) Debug.Log($"ScoreManager не нашел IBallResetPosition {this}");
-        if (_gameManager == null) Debug.Log($"ScoreManager не нашел _gameManager {this}");
-    }
-
     public void PlayerScore()
     {
-       _playerScore++;
+        Initialize();
+            
+        _playerScore++;
         _uiData.PlayerScore = _playerScore;
         Debug.Log($"PlayerScore: {_playerScore}");
+        
+        _uiData.FinalScore = $"{_playerScore} : {_computerScore}";
 
-        if (_playerScore == 2) _IpauseGame.PauseGame();
-
-        Debug.Log($"                  {_gameManager._ball.GetComponent<Rigidbody2D>()} ");
-
-        _IballResetPosition.ResetPosition(_gameManager.rb);
+        if (_playerScore == _endScore) _levelInitializer.GameManager.win = true;
     }
 
     public void ComputerScore()
     {
+        Initialize();
+        
         _computerScore++;
         _uiData.ComputerScore = _computerScore;
         Debug.Log($"ComputerScore: {_computerScore}");
         
-         _uiData.FinalScore = $"{_playerScore} : {_computerScore}"; // TODO: Не могу присвоить 
+         _uiData.FinalScore = $"{_playerScore} : {_computerScore}";
 
-        if (_computerScore == 2) _IpauseGame.PauseGame();
-
-        Debug.Log($"                  {_gameManager._ball.GetComponent<Rigidbody2D>()} ");
-        _IballResetPosition.ResetPosition(_gameManager.rb);
+         if (_computerScore == _endScore) _levelInitializer.GameManager.win = true;
+         
+        //resetPosition
     }
 
 

@@ -1,45 +1,45 @@
 using System;
+using Interface;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
     public class GameManager: MonoBehaviour
-    {
-        private LevelInitializer _initializer;
-        
-        public Ball _ball;
-        public Rigidbody2D rb;
+    {  
+        private LevelInitializer _levelInitializer;
+        private ScoreManager _scoreManager;
 
-        private bool _isDon ;
-        
+        [HideInInspector]
+        public bool startUpdate;
+        public bool win;
+
+        private int _scoreEndGame;
+        private void Start()
+        {
+            _levelInitializer = GetComponent<LevelInitializer>();
+        }
+
         private void Update()
         {
-            BallUpdateTick();
-        }
-
-        private void BallUpdateTick()
-        {
-            if(!_isDon)
+            EndGame();
+            if (!startUpdate)
             {
-                _isDon = true;
+                startUpdate = true;
+                Debug.Log($"Update включен");
                 
-                Debug.Log($"BallUpdateTick");
-                
-                Initialize();
-                
-                rb = _ball.GetComponent<Rigidbody2D>();
-                if (rb == null) Debug.Log($"rb = null  ({this})");
-                
-                _ball.AddShootBall(rb);
+                _levelInitializer.BallScrypt.AddShootBall(_levelInitializer.BallRigidBody);
             }
         }
-        private void Initialize()
+
+        private void EndGame()
         {
-            _initializer = GetComponent<LevelInitializer>();
-            _ball = _initializer.BallObject;
-            if (_ball == null) Debug.Log($"_ballRigidbody = null  ({this})");
+            if (win)
+            {
+                win = false;
+                Debug.Log("Победа");
+                _levelInitializer.IPauseGame.PauseGame();
+            }
         }
-        
-        
     }
 }
