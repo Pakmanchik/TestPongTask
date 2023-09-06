@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace PatternBuilderVersion3
+namespace BuilderRacket
 {
     public class Racket : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PatternBuilderVersion3
+namespace BuilderRacket
 {
     public class RacketSkins : MonoBehaviour
     {

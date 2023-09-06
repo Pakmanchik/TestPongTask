@@ -1,17 +1,12 @@
 using System;
-using DefaultNamespace;
-using Interface;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    private LevelInitializer _levelInitializer;
-    
-    
     [SerializeField]
     private UiElements _uiData;
-
+    
     [SerializeField] 
     private int _endScore;
     
@@ -19,7 +14,8 @@ public class ScoreManager : MonoBehaviour
     private int _computerScore;
     private string _finalScore;
 
-
+    private LevelInitializer _levelInitializer;
+    
     private void Initialize()
     {
         _levelInitializer = GetComponent<LevelInitializer>();
@@ -35,6 +31,8 @@ public class ScoreManager : MonoBehaviour
         _uiData.FinalScore = $"{_playerScore} : {_computerScore}";
 
         if (_playerScore == _endScore) _levelInitializer.GameManager.win = true;
+        
+        _levelInitializer.BallScrypt.ResetPosition(_levelInitializer.BallRigidbody);
     }
 
     public void ComputerScore()
@@ -49,7 +47,7 @@ public class ScoreManager : MonoBehaviour
 
          if (_computerScore == _endScore) _levelInitializer.GameManager.win = true;
          
-        //resetPosition
+        _levelInitializer.BallScrypt.ResetPosition(_levelInitializer.BallRigidbody);
     }
 
 

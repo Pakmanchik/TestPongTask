@@ -1,7 +1,6 @@
 using Interface;
 using UnityEngine;
 
-
 public class RacketBase : IMove
 {
     private Vector2 _directionRacket;

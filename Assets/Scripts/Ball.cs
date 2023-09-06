@@ -1,10 +1,11 @@
 using Interface;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] 
-    private float speed;
+    [FormerlySerializedAs("speed")] [SerializeField] 
+    private float _speed;
     
     
    
@@ -18,7 +19,7 @@ public class Ball : MonoBehaviour
 
         Vector2 direction = new(x, y);
         if(rigidbody2D == null)  Debug.Log($"_ballRigidbody = null  ({this})");
-        rigidbody2D.AddForce(direction *  speed);
+        rigidbody2D.AddForce(direction *  _speed);
     }
 
     public void ResetPosition(Rigidbody2D rigidbody2D)

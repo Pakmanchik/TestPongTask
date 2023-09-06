@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace PatternBuilderVersion3
+namespace BuilderRacket
 { 
     public class BuilderExample : MonoBehaviour
     {
-       
-        [SerializeField]
+       [SerializeField]
         private Skin _skin;
         
         [Space(15)]
@@ -23,7 +22,6 @@ namespace PatternBuilderVersion3
         // TODO: Превратить в ScriptbleObject
 
         private int _hp, _level, _speed;
-
 
         private RacketStats _boltStats;
         

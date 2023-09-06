@@ -1,10 +1,5 @@
-using System;
-using Interface;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace DefaultNamespace
-{
     public class GameManager: MonoBehaviour
     {  
         private LevelInitializer _levelInitializer;
@@ -12,6 +7,7 @@ namespace DefaultNamespace
 
         [HideInInspector]
         public bool startUpdate;
+        
         public bool win;
 
         private int _scoreEndGame;
@@ -28,9 +24,19 @@ namespace DefaultNamespace
                 startUpdate = true;
                 Debug.Log($"Update включен");
                 
-                _levelInitializer.BallScrypt.AddShootBall(_levelInitializer.BallRigidBody);
+                _levelInitializer.BallScrypt.AddShootBall(_levelInitializer.BallRigidbody);
             }
+            UpdateTickRacketComputer();
         }
+
+        private void UpdateTickRacketComputer()
+        {
+            _levelInitializer.RacketComputerScrypt.MoveRacket(_levelInitializer.BallTransform
+                ,_levelInitializer.RacketComputerTransform
+                ,_levelInitializer.SpeedComputerRacket
+                ,_levelInitializer.RigidbodyComputer);
+        }
+        
 
         private void EndGame()
         {
@@ -38,8 +44,7 @@ namespace DefaultNamespace
             {
                 win = false;
                 Debug.Log("Победа");
-                _levelInitializer.IPauseGame.PauseGame();
+                _levelInitializer.PauseGame.PauseGame();
             }
         }
     }
-}

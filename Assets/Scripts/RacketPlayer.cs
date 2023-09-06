@@ -1,18 +1,16 @@
 using Interface;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class RacketPlayer : MonoBehaviour
 {
     [SerializeField] 
-    private float _speedRacket = 0;
+    private float _speedRacket;
     [SerializeField] 
     private Rigidbody2D _rigidbody2D;
 
     private IMove _move = new RacketBase();
     private Vector2 _direction;
-    private float _vericalalVector;
+    private float _verticalVector;
     
     private void Awake()
     {
@@ -27,8 +25,8 @@ public class RacketPlayer : MonoBehaviour
     
     public void MoveRacket()
     {
-        _vericalalVector = Input.GetAxis("Vertical");
-        _direction = new Vector2(0,_vericalalVector * _speedRacket);
+        _verticalVector = Input.GetAxis("Vertical");
+        _direction = new Vector2(0,_verticalVector * _speedRacket);
         _move.Move(_direction,_rigidbody2D);
     }
 }

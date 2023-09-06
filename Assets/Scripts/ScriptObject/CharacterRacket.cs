@@ -1,7 +1,7 @@
-using PatternBuilderVersion3;
+using BuilderRacket;
 using UnityEngine;
 
-namespace PatternBuilderVersion3
+namespace BuilderRacket
 {
     [CreateAssetMenu(fileName = "New CharacterRacket", menuName = "Character Racket", order = 51)] 
     public class CharacterRacket : ScriptableObject

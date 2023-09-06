@@ -954,7 +954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980ab20708489c842beac12b07b823f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
+  _speed: 300
 --- !u!58 &1122990427
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1204,7 +1204,6 @@ GameObject:
   - component: {fileID: 1331732227}
   - component: {fileID: 1331732226}
   - component: {fileID: 1331732225}
-  - component: {fileID: 1331732224}
   m_Layer: 0
   m_Name: Racket(Computer)
   m_TagString: Untagged
@@ -1212,21 +1211,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1331732224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331732223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f4ef09ece95754686bb092e1780d6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ball: {fileID: 1122990428}
-  _speedRacket: 10
-  _rigidbody2D: {fileID: 0}
 --- !u!50 &1331732225
 Rigidbody2D:
   serializedVersion: 4
@@ -1372,10 +1356,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a420fd71c7a5fec4aa5bae6c68021139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreTrigger:
+  _scoreTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1976524617}
+      - m_Target: {fileID: 1976524621}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
         m_MethodName: PlayerScore
         m_Mode: 1
@@ -1511,10 +1495,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a420fd71c7a5fec4aa5bae6c68021139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreTrigger:
+  _scoreTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1976524617}
+      - m_Target: {fileID: 1976524621}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
         m_MethodName: ComputerScore
         m_Mode: 1
@@ -1945,11 +1929,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976524615}
-  - component: {fileID: 1976524617}
   - component: {fileID: 1976524618}
   - component: {fileID: 1976524616}
   - component: {fileID: 1976524620}
   - component: {fileID: 1976524619}
+  - component: {fileID: 1976524621}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1986,22 +1970,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ball: {fileID: 1122990425}
   _button: {fileID: 753748497}
---- !u!114 &1976524617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976524614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4c6f5b2adbf594f8ae3ff37652c3bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiData:
-    _playerScoreText: {fileID: 602782312}
-    _computerScoreText: {fileID: 1112752874}
-    _finalScoreText: {fileID: 1113876349}
 --- !u!114 &1976524618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,7 +1999,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c866f84b89147ae88a3b041b4a19bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ballObject: {fileID: 1122990426}
+  _gameManager: {fileID: 1976524620}
+  _ballElements:
+    _ball: {fileID: 0}
+  _scoreManager: {fileID: 1976524621}
+  _computerRacketObject: {fileID: 1331732223}
+  _rigidbodyComputer: {fileID: 1331732225}
+  _speedComputerRacket: 10
+  _racketComputerTransform: {x: 0, y: 0}
 --- !u!114 &1976524620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2044,8 +2019,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3582e814294879b9b00d953f0c6d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ball: {fileID: 0}
-  rb: {fileID: 0}
+  startUpdate: 0
+  win: 0
+--- !u!114 &1976524621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976524614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4c6f5b2adbf594f8ae3ff37652c3bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiData:
+    _playerScoreText: {fileID: 602782312}
+    _computerScoreText: {fileID: 1112752874}
+    _finalScoreText: {fileID: 1113876349}
+  _endScore: 2
 --- !u!1 &2079910879
 GameObject:
   m_ObjectHideFlags: 0
