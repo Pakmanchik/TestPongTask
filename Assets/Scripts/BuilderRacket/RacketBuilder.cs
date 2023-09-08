@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BuilderRacket
 {
-    public class RacketBuilder
+    public sealed class RacketBuilder
     {
         private Racket _prefabRacket;
         private RacketSkins _skinPrefab;

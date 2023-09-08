@@ -1,6 +1,6 @@
 namespace BuilderRacket
 {
-    public class RacketStats
+    public sealed class RacketStats
     {
         public int hp;
         public int level;

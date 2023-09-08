@@ -2,16 +2,17 @@ using Interface;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class EndGame : MonoBehaviour, IPauseGame
+public sealed class EndGame : MonoBehaviour, IPauseGame
 {
-    [SerializeField] 
     private GameObject _ball;
-    [SerializeField] 
+    
     private GameObject _button;
 
-    private void Awake()
+    public void InitializeEndGame(GameObject ball,GameObject buttonEndGame)
     {
+        _ball = ball;
+        _button = buttonEndGame;
+        
         _button.SetActive(false);
         
         if (_ball == null) Debug.Log($"EndGame не нашел _ball {this}");
@@ -21,7 +22,8 @@ public class EndGame : MonoBehaviour, IPauseGame
     public void PauseGame()
     {
         _button.SetActive(true);
-        Object.Destroy(_ball);
+        
+        Destroy(_ball);
     }
 
     public void ReloadScene()

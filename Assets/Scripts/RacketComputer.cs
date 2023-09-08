@@ -1,35 +1,34 @@
 using Interface;
 using UnityEngine;
 
-public class RacketComputer : MonoBehaviour ,IHaveMoveRacket
+public sealed class RacketComputer : MonoBehaviour ,IHaveMoveRacket
 {
     private IMove _move = new RacketBase();
 
     private Transform _targetPosition;
-    private Transform _racketPosition;
     private float _speedRacket;
     private Rigidbody2D _rigidBodyRacket;
+    private Transform _transformRacket;
     
-    
-    public void InitializerComputerRacket(Transform transformTarget, Transform transformRacket,float speed,GameObject racket)
+    public void InitializerComputerRacket(Transform positionTarget, float speed)
     {
-        _targetPosition = transformTarget;
-        _racketPosition = transformRacket;
+        _targetPosition = positionTarget;
         _speedRacket = speed;
-        _rigidBodyRacket = racket.GetComponent<Rigidbody2D>();
+        _rigidBodyRacket = GetComponent<Rigidbody2D>();
+        _transformRacket = _rigidBodyRacket.GetComponent<Transform>();
     }
 
     public void MoveRacket()
     {
         if (_targetPosition.position.x > -3f)
         {
-            if (_targetPosition.position.y >= _racketPosition.position.y)
+            if (_targetPosition.position.y > _rigidBodyRacket.position.y )
             {
-                _move.Move(_racketPosition.TransformVector(Vector3.up) * _speedRacket,_rigidBodyRacket);
+                _move.Move(_transformRacket.TransformVector(Vector2.up) * _speedRacket,_rigidBodyRacket);
             }
-            else if (_targetPosition.position.y <= _racketPosition.position.y)
+            else if (_targetPosition.position.y < _rigidBodyRacket.position .y)
             {
-                _move.Move(_racketPosition.TransformVector(Vector3.down) * _speedRacket,_rigidBodyRacket);
+                _move.Move(_transformRacket.TransformVector(Vector2.down) * _speedRacket,_rigidBodyRacket);
             }
         }
     }

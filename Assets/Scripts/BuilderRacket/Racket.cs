@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace BuilderRacket
 {
-    public class Racket : MonoBehaviour
+    public sealed class Racket : MonoBehaviour
     {
         [SerializeField] 
         private Transform _skinContainer;
@@ -13,11 +11,6 @@ namespace BuilderRacket
         public string Name { get; private set; }
         
         private RacketSkins _skin;
-
-        private void Awake()
-        {
-            if (_skinContainer == null) Debug.Log($"_skinContainer не найден {this}");
-        }
 
         public void SetName(string name)
         {

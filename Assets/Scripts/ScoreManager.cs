@@ -1,53 +1,57 @@
 using System;
+using Interface;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour
+public sealed class ScoreManager : MonoBehaviour
 {
     [SerializeField]
     private UiElements _uiData;
     
     [SerializeField] 
     private int _endScore;
+    public event Action OnFinishScore;
     
     private int _playerScore;
     private int _computerScore;
     private string _finalScore;
 
-    private LevelInitializer _levelInitializer;
+    private GameManager _gameManager;
+    private IHaveResetPosition _resetPosition;
     
-    private void Initialize()
+    public void InitializeScoreManager(GameObject resetObject)
     {
-        _levelInitializer = GetComponent<LevelInitializer>();
+        _gameManager = GetComponent<GameManager>();
+
+        _resetPosition = resetObject.GetComponent<Ball>();
+        
+        if(_gameManager == null) Debug.Log($"_gameManager = null  ({this})");
+        if(_resetPosition == null) Debug.Log($"_resetPosition = null  ({this})");
     }
-    public void PlayerScore()
+    public void PlayerScoreInc()
     {
-        Initialize();
-            
         _playerScore++;
+        
         _uiData.PlayerScore = _playerScore;
-        Debug.Log($"PlayerScore: {_playerScore}");
         
         _uiData.FinalScore = $"{_playerScore} : {_computerScore}";
 
-        if (_playerScore == _endScore) _levelInitializer.GameManager.win = true;
+        if (_playerScore == _endScore) OnFinishScore?.Invoke();
         
-        _levelInitializer.BallScrypt.ResetPosition();
+        _resetPosition.ResetPosition();
     }
 
-    public void ComputerScore()
+    public void ComputerScoreInc()
     {
-        Initialize();
-        
         _computerScore++;
+        
         _uiData.ComputerScore = _computerScore;
-        Debug.Log($"ComputerScore: {_computerScore}");
         
          _uiData.FinalScore = $"{_playerScore} : {_computerScore}";
 
-         if (_computerScore == _endScore) _levelInitializer.GameManager.win = true;
+         if (_computerScore == _endScore) OnFinishScore?.Invoke();
          
-        _levelInitializer.BallScrypt.ResetPosition();
+        _resetPosition.ResetPosition();
     }
 
 

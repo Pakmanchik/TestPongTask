@@ -1,7 +1,4 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace BuilderRacket
 { 
@@ -18,14 +15,15 @@ namespace BuilderRacket
         [SerializeField] 
         private RacketSkins _skinRacketPrefab;
         
+        [Space(15)]
         [SerializeField] 
         private CharacterRacket _characterRacket; 
-        
-        // TODO: Превратить в ScriptbleObject
 
         private int _hp, _level, _speed;
 
         private RacketStats _boltStats;
+
+        private GameObject _gameObject;
         
         private RacketStats _racketStats = new()
         {
@@ -34,10 +32,10 @@ namespace BuilderRacket
             speed = 20
         };
     
-        public void BuildRacket(string skin)
+        public void BuildRacket()
         {
             RacketBuilder racketBuilder = new RacketBuilder();
-            if (skin == "Bolt")
+            if (_skin == Skin.Bolt)
             {
                 var createdBolt = racketBuilder
                     .AddRootPrefab(_racketRootPrefab)
@@ -49,7 +47,7 @@ namespace BuilderRacket
                 Debug.Log($"Создан {createdBolt}");
             }
 
-            else if (skin == "Classic")
+            else if (_skin == Skin.Classic)
             {
                 var createdRacket = racketBuilder
                     .AddRootPrefab(_racketRootPrefab)

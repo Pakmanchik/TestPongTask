@@ -1,4 +1,3 @@
-using BuilderRacket;
 using UnityEngine;
 
 namespace BuilderRacket
@@ -14,12 +13,6 @@ namespace BuilderRacket
         private int _speed;
 
         public int Hp => _hp;
-        // {
-        //     get
-        //     {
-        //         return _hp;
-        //     }
-        // }
 
         public int Level => _level;
 

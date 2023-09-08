@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BuilderRacket
 {
-    public class RacketSkins : MonoBehaviour
+    public sealed class RacketSkins : MonoBehaviour
     {
     }
 }

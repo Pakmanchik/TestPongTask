@@ -1,7 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class GoalZone : MonoBehaviour
+public sealed class GoalZone : MonoBehaviour
 {
     [SerializeField]
     private EventTrigger.TriggerEvent _scoreTrigger;
