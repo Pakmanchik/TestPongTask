@@ -1,16 +1,16 @@
+using Interface;
 using UnityEngine;
 
     public class GameManager: MonoBehaviour
     {  
+        [HideInInspector]
+        public bool win;
+        
         private LevelInitializer _levelInitializer;
         private ScoreManager _scoreManager;
+        private IHaveMoveRacket _moveRacket;
+        private bool _startUpdate;
 
-        [HideInInspector]
-        public bool startUpdate;
-        
-        public bool win;
-
-        private int _scoreEndGame;
         private void Start()
         {
             _levelInitializer = GetComponent<LevelInitializer>();
@@ -18,25 +18,30 @@ using UnityEngine;
 
         private void Update()
         {
-            EndGame();
-            if (!startUpdate)
+            if (!_startUpdate)
             {
-                startUpdate = true;
+                if(_levelInitializer == null)Debug.Log($"_levelInitializer.BallRigidbody == null");
+                
+                _startUpdate = true;
+                
                 Debug.Log($"Update включен");
                 
-                _levelInitializer.BallScrypt.AddShootBall(_levelInitializer.BallRigidbody);
+                _levelInitializer.BallScrypt.AddShootBall();
+                Debug.Log($"пнул мяч");
             }
+            EndGame();
+        }
+
+        private void FixedUpdate()
+        {
             UpdateTickRacketComputer();
         }
 
         private void UpdateTickRacketComputer()
         {
-            _levelInitializer.RacketComputerScrypt.MoveRacket(_levelInitializer.BallTransform
-                ,_levelInitializer.RacketComputerTransform
-                ,_levelInitializer.SpeedComputerRacket
-                ,_levelInitializer.RigidbodyComputer);
+            _levelInitializer.RacketPlayerScrypt.UpdateTicKPlayer();
+            _levelInitializer.PlayerMove.MoveRacket();
         }
-        
 
         private void EndGame()
         {
@@ -45,6 +50,7 @@ using UnityEngine;
                 win = false;
                 Debug.Log("Победа");
                 _levelInitializer.PauseGame.PauseGame();
+                this.enabled = false;
             }
         }
     }

@@ -1204,6 +1204,7 @@ GameObject:
   - component: {fileID: 1331732227}
   - component: {fileID: 1331732226}
   - component: {fileID: 1331732225}
+  - component: {fileID: 1331732229}
   m_Layer: 0
   m_Name: Racket(Computer)
   m_TagString: Untagged
@@ -1325,6 +1326,18 @@ Transform:
   m_Father: {fileID: 122243354}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1331732229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331732223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4ef09ece95754686bb092e1780d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1382482983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,11 +1942,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976524615}
-  - component: {fileID: 1976524618}
   - component: {fileID: 1976524616}
   - component: {fileID: 1976524620}
   - component: {fileID: 1976524619}
   - component: {fileID: 1976524621}
+  - component: {fileID: 1976524622}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1970,23 +1983,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ball: {fileID: 1122990425}
   _button: {fileID: 753748497}
---- !u!114 &1976524618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976524614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cfd3395a1d34ed699d8534a1940b324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _skin: 1
-  _racketRootPrefab: {fileID: 7176032391095622279, guid: b1c2568083070e847b73a194f9467eff, type: 3}
-  _skinBoltPrefab: {fileID: 183140505, guid: 612d39f48c5c517438e197d986bd9509, type: 3}
-  _skinRacketPrefab: {fileID: 1760468349, guid: be5ae28b048fb964a990a53c935fb6da, type: 3}
-  _characterRacket: {fileID: 11400000, guid: 3fdd2b5723552ff40b575432bc5414e1, type: 2}
 --- !u!114 &1976524619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,14 +1995,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c866f84b89147ae88a3b041b4a19bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameManager: {fileID: 1976524620}
   _ballElements:
-    _ball: {fileID: 0}
-  _scoreManager: {fileID: 1976524621}
+    _ball: {fileID: 1122990425}
   _computerRacketObject: {fileID: 1331732223}
-  _rigidbodyComputer: {fileID: 1331732225}
-  _speedComputerRacket: 10
-  _racketComputerTransform: {x: 0, y: 0}
+  _speedComputerRacket: 2.5
+  _playerRacketObjectBolt: {fileID: 3490476833843190272, guid: 612d39f48c5c517438e197d986bd9509, type: 3}
+  _playerRacketObjecClassic: {fileID: 3490476833843190272, guid: be5ae28b048fb964a990a53c935fb6da, type: 3}
+  _speedPlayerRacket: 10
+  _skinRacket: 1
 --- !u!114 &1976524620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,7 +2015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3582e814294879b9b00d953f0c6d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startUpdate: 0
   win: 0
 --- !u!114 &1976524621
 MonoBehaviour:
@@ -2038,6 +2033,23 @@ MonoBehaviour:
     _computerScoreText: {fileID: 1112752874}
     _finalScoreText: {fileID: 1113876349}
   _endScore: 2
+--- !u!114 &1976524622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976524614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f0fb3e349948dda2d659a91808477f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin: 1
+  _racketRootPrefab: {fileID: 7176032391095622279, guid: b1c2568083070e847b73a194f9467eff, type: 3}
+  _skinBoltPrefab: {fileID: 183140505, guid: 612d39f48c5c517438e197d986bd9509, type: 3}
+  _skinRacketPrefab: {fileID: 1760468349, guid: be5ae28b048fb964a990a53c935fb6da, type: 3}
+  _characterRacket: {fileID: 11400000, guid: 3fdd2b5723552ff40b575432bc5414e1, type: 2}
 --- !u!1 &2079910879
 GameObject:
   m_ObjectHideFlags: 0

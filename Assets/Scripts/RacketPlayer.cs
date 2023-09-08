@@ -1,32 +1,47 @@
 using Interface;
 using UnityEngine;
 
-public class RacketPlayer : MonoBehaviour
+public class RacketPlayer : MonoBehaviour , IHaveMoveRacket
 {
-    [SerializeField] 
+    [SerializeField]
     private float _speedRacket;
-    [SerializeField] 
+   
     private Rigidbody2D _rigidbody2D;
-
-    private IMove _move = new RacketBase();
+    
+    private IMove _move;
     private Vector2 _direction;
     private float _verticalVector;
-    
-    private void Awake()
+
+    public void InitializedPlayer( float speed)
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+       
+        _move = new RacketBase();
         
         if(_rigidbody2D == null)  Debug.Log($"(RacketPlayer) не нашел rigidbody  ({this})");
-        if(_move == null)  Debug.Log($"(RacketPlayer) не нашел _move  ({this})");
-        Debug.Log($"(RacketPlayer) _speedRacket = {_speedRacket}  ({this})");
+        if(_move == null)  Debug.Log($"(_move) не нашел rigidbody  ({this})");
     }
 
-    private void FixedUpdate() => MoveRacket();
+    public void UpdateTicKPlayer()
+    {
+        MoveRacket();
+    }
     
     public void MoveRacket()
     {
         _verticalVector = Input.GetAxis("Vertical");
-        _direction = new Vector2(0,_verticalVector * _speedRacket);
-        _move.Move(_direction,_rigidbody2D);
+      
+        _direction = new Vector2(0,1 * _speedRacket );
+        Debug.Log(_direction);
+        
+        Move(_direction,_rigidbody2D);
+    }
+    private void Move(Vector2 verticalVector,Rigidbody2D rigidbody2D)
+    {
+        if(rigidbody2D == null)  Debug.Log($"(RacketPlayer) не нашел rigidbody  ({this})");
+        
+        Debug.Log($"Move called. Instance: [{rigidbody2D.gameObject.name}]. Ref pos: [{rigidbody2D.position.x}:{rigidbody2D.position.y}]. IncVector: [{verticalVector.x}:{verticalVector.y}]");
+        
+        rigidbody2D.MovePosition(rigidbody2D.position + verticalVector * Time.fixedDeltaTime);
     }
 }

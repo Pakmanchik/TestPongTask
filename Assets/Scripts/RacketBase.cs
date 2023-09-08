@@ -10,7 +10,10 @@ public class RacketBase : IMove
         _directionRacket = verticalVector; 
         
         if(rigidbody2D == null)  Debug.Log($"(RacketPlayer) не нашел rigidbody  ({this})");
-        rigidbody2D.MovePosition(rigidbody2D.position + _directionRacket * Time.fixedDeltaTime);
+        
+        //Debug.Log($"Move called. Instance: [{rigidbody2D.gameObject.name}]. Ref pos: [{rigidbody2D.position.x}:{rigidbody2D.position.y}]. IncVector: [{verticalVector.x}:{verticalVector.y}]");
+        
+        rigidbody2D.MovePosition(rigidbody2D.position + verticalVector * Time.fixedDeltaTime);
     }
 
 }

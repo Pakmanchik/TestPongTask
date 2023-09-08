@@ -32,7 +32,7 @@ public class ScoreManager : MonoBehaviour
 
         if (_playerScore == _endScore) _levelInitializer.GameManager.win = true;
         
-        _levelInitializer.BallScrypt.ResetPosition(_levelInitializer.BallRigidbody);
+        _levelInitializer.BallScrypt.ResetPosition();
     }
 
     public void ComputerScore()
@@ -47,7 +47,7 @@ public class ScoreManager : MonoBehaviour
 
          if (_computerScore == _endScore) _levelInitializer.GameManager.win = true;
          
-        _levelInitializer.BallScrypt.ResetPosition(_levelInitializer.BallRigidbody);
+        _levelInitializer.BallScrypt.ResetPosition();
     }
 
 

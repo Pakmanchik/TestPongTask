@@ -1,11 +1,13 @@
+using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace BuilderRacket
 { 
-    public class BuilderExample : MonoBehaviour
+    public class BuilderBase : MonoBehaviour
     {
-       [SerializeField]
+        [SerializeField]
         private Skin _skin;
         
         [Space(15)]
@@ -31,30 +33,23 @@ namespace BuilderRacket
             level = 2,
             speed = 20
         };
-
-        private void Awake()
-        {
-            if (_racketRootPrefab == null) Debug.Log($"_racketRootPrefab не найден {this}");
-            if (_skinBoltPrefab == null) Debug.Log($"_skinBoltPrefab не найден {this}");
-            if (_skinRacketPrefab == null) Debug.Log($"_skinRacketPrefab не найден {this}");
-        }
-
-        private void Start()
+    
+        public void BuildRacket(string skin)
         {
             RacketBuilder racketBuilder = new RacketBuilder();
-            if (_skin == Skin.Bolt)
+            if (skin == "Bolt")
             {
                 var createdBolt = racketBuilder
-                                .AddRootPrefab(_racketRootPrefab)
-                                .AddName("Bolt")
-                                .AddSkin(_skinBoltPrefab)
-                                .AddStats(_characterRacket.racketStats)
-                                .Build();
+                    .AddRootPrefab(_racketRootPrefab)
+                    .AddName("Bolt")
+                    .AddSkin(_skinBoltPrefab)
+                    .AddStats(_characterRacket.racketStats)
+                    .Build();
 
                 Debug.Log($"Создан {createdBolt}");
             }
 
-            else if (_skin == Skin.Classic)
+            else if (skin == "Classic")
             {
                 var createdRacket = racketBuilder
                     .AddRootPrefab(_racketRootPrefab)
@@ -62,7 +57,7 @@ namespace BuilderRacket
                     .AddSkin(_skinRacketPrefab)
                     .AddStats(_racketStats)
                     .Build();
-                
+
                 Debug.Log($"Создан {createdRacket}");
             }
             else
